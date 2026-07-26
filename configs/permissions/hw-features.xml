@@ -42,12 +42,12 @@
     <feature name="android.hardware.location" />
     <feature name="android.hardware.location.gps" />
     <feature name="android.hardware.location.network" />
-    <!--<feature name="android.hardware.sensor.accelerometer" />
-    <feature name="android.hardware.sensor.compass" />
-    <feature name="android.hardware.sensor.light" />
-    <feature name="android.hardware.sensor.gyroscope" />
-    <feature name="android.hardware.sensor.proximity" />
-    <feature name="android.hardware.sensor.barometer" />
-    <feature name="android.hardware.sensor.stepcounter" />
-    <feature name="android.hardware.sensor.stepdetector" /> -->
+    <!--<feature name="android.hardware.sensor.accelerometer" />-->
+    <!--<feature name="android.hardware.sensor.compass" />-->
+    <!--<feature name="android.hardware.sensor.light" />-->
+    <!--<feature name="android.hardware.sensor.gyroscope" />-->
+    <!--<feature name="android.hardware.sensor.proximity" />-->
+    <!--<feature name="android.hardware.sensor.barometer" />-->
+    <!--<feature name="android.hardware.sensor.stepcounter" />-->
+    <!--<feature name="android.hardware.sensor.stepdetector" />-->
 </permissions>

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <MarvellPlatformAudioConfiguration>
     <BoardDeviceList>
-        <Device connectivity="quasi_diff" coupling="dc">AMIC1</Device>
-        <Device connectivity="quasi_diff" coupling="dc">AMIC2</Device>
-        <Device connectivity="quasi_diff" coupling="dc">AMIC1_SPK_MODE</Device>
-        <Device connectivity="quasi_diff" coupling="dc">AMIC2_SPK_MODE</Device>
-        <Device connectivity="quasi_diff" coupling="dc">HSMIC</Device>
+        <Device connectivity="diff" coupling="ac">AMIC1</Device>
+        <Device connectivity="diff" coupling="ac">AMIC1_SPK_MODE</Device>
+        <Device connectivity="diff" coupling="ac">HSMIC</Device>
     </BoardDeviceList>
     <AndroidDevice identifier="AUDIO_DEVICE_IN_BUILTIN_MIC">
         <!-- voice call with 3 mic -->
@@ -14,9 +12,6 @@
         </Application>
         <!-- VoIP with dual mic -->
         <Application identifier="VoIP">
-            <Device>AMIC1</Device>
-        </Application>
-        <Application identifier="VT">
             <Device>AMIC1</Device>
         </Application>
         <!-- default with single mic -->
@@ -34,9 +29,9 @@
         </Application>
         <Application identifier="VT">
             <Device>AMIC1_SPK_MODE</Device>
-        </Application>
+        </Application>   
         <Application identifier="Default">
-            <Device>AMIC1</Device>
+            <Device>AMIC1_SPK_MODE</Device>
         </Application>
     </AndroidDevice>
 </MarvellPlatformAudioConfiguration>

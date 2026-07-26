@@ -90,12 +90,12 @@ void init_target_properties()
 
     std::string bootloader = property_get("ro.bootloader");
 
-    if( bootloader.find("G531F") == 0 )
+    if( bootloader.find("G361F") == 0 )
     {
-        property_override("ro.build.fingerprint", "samsung/grandprimeveltexx/grandprimevelte:5.1.1/LMY48B/G531FXXU1APG2:user/release-keys");
-        property_override("ro.build.description", "grandprimeveltexx-user 5.1.1 LMY48B G531FXXU1APG2 release-keys");
-        property_override("ro.product.model", "SM-G531F");
-        property_override("ro.product.device", "grandprimevelte");
+        property_override("ro.build.fingerprint", "samsung/coreprimeveltexx/coreprimevelte:5.1.1/LMY48B/G361FXXU1AOL1:user/release-keys");
+        property_override("ro.build.description", "coreprimeveltexx-user 5.1.1 LMY48B G361FXXU1AOL1 release-keys");
+        property_override("ro.product.model", "SM-G361F");
+        property_override("ro.product.device", "coreprimevelte");
         property_override("ro.telephony.ril_class", "SamsungPXA1908RIL");
         lte_properties("");
     }

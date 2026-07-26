@@ -19,14 +19,14 @@ $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit device configuration
-$(call inherit-product, device/samsung/grandprimevelte/grandprimevelte.mk)
+$(call inherit-product, device/samsung/coreprimevelte/coreprimevelte.mk)
 
 # Release name
-PRODUCT_RELEASE_NAME := SM-G531F
+PRODUCT_RELEASE_NAME := SM-G361F
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := grandprimevelte
-PRODUCT_NAME := lineage_grandprimevelte
+PRODUCT_DEVICE := coreprimevelte
+PRODUCT_NAME := lineage_coreprimevelte
 PRODUCT_BRAND := samsung
-PRODUCT_MODEL := SM-G531F
+PRODUCT_MODEL := SM-G361F
 PRODUCT_MANUFACTURER := samsung

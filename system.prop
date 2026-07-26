@@ -2,7 +2,7 @@
 # system.prop
 #
 
-ro.product.model=SM-G531F
+ro.product.model=SM-G361F
 
 # System property for storage_preload
 persist.sys.storage_preload=1
@@ -28,16 +28,14 @@ dalvik.vm.heapminfree=2m
 dalvik.vm.heapmaxfree=8m
 
 # Samsung Specific Properties
-ro.build.PDA=G531FXXU1APG2
-ro.build.hidden_ver=G531FXXU1APG2
+ro.build.PDA=G361FXXU1AOL1
+ro.build.hidden_ver=G361FXXU1AOL1
 ro.config.rm_preload_enabled=0
-ro.build.changelist=1070395
+ro.build.changelist=901875
 ro.product_ship=true
 ro.chipname=PXA19xx
 
 ro.tel.config.path=/system/etc/tel/
-ro.cmd.DUAL_SIMCARD=true
-ro.cmd.ssipc_enable=true
 ro.cmd.WORLD_PHONE=true
 
 ro.config.oomminfree=73728,92160,110592,129024,147456,184320

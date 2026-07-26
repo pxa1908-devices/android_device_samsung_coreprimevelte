@@ -15,28 +15,24 @@
 # Inherit from pxa1908-common
 -include device/samsung/pxa1908-common/BoardConfigCommon.mk
 
-# inherit from the proprietary version
-#-include vendor/samsung/grandprimevelte/BoardConfigVendor.mk
+DEVICE_PATH := device/samsung/coreprimevelte
 
-DEVICE_PATH := device/samsung/grandprimevelte
-
-TARGET_OTA_ASSERT_DEVICE := grandprimevelte
+TARGET_OTA_ASSERT_DEVICE := coreprimevelte
 
 # Init
 TARGET_PROVIDES_INIT_TARGET_RC := true
-TARGET_LIBINIT_PXA1908_DEFINES_FILE := $(DEVICE_PATH)/init/init_grandprimevelte.cpp
+TARGET_LIBINIT_PXA1908_DEFINES_FILE := $(DEVICE_PATH)/init/init_coreprimevelte.cpp
 
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 
 # Kernel
-TARGET_KERNEL_SOURCE := kernel/samsung/grandprimevelte
-TARGET_KERNEL_CONFIG := lineage_grandprimevelte_defconfig
+TARGET_KERNEL_SOURCE := kernel/samsung/coreprimevelte
+TARGET_KERNEL_CONFIG := lineage_coreprimevelte_defconfig
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
-#KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin
-KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-7.2-linaro/bin/
+KERNEL_TOOLCHAIN := /opt/toolchains/aarch64-linux-android-4.8/bin
 
 #TARGET_GCC_VERSION_EXP := 4.9-linaro
 #TARGET_TOOLS_PREFIX := $(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-$(TARGET_GCC_VERSION_EXP)/bin/arm-linux-androideabi-
