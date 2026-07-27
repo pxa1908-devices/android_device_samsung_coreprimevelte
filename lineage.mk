@@ -12,8 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+# Inherit common LineageOS / CM product configuration
+$(call inherit-product-if-exists, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product-if-exists, vendor/cm/config/common_full_phone.mk)
 
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)

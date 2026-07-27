@@ -17,7 +17,9 @@
 
 DEVICE_PATH := device/samsung/coreprimevelte
 
-TARGET_OTA_ASSERT_DEVICE := coreprimevelte
+# Oreo legacy non-Treble settings
+PRODUCT_FULL_TREBLE_OVERRIDE := false
+BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := false
 
 # Init
 TARGET_PROVIDES_INIT_TARGET_RC := true
@@ -32,7 +34,9 @@ TARGET_KERNEL_CONFIG := lineage_coreprimevelte_defconfig
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
+ifneq ($(wildcard /opt/toolchains/aarch64-linux-android-4.8/bin),)
 KERNEL_TOOLCHAIN := /opt/toolchains/aarch64-linux-android-4.8/bin
+endif
 
 #TARGET_GCC_VERSION_EXP := 4.9-linaro
 #TARGET_TOOLS_PREFIX := $(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-$(TARGET_GCC_VERSION_EXP)/bin/arm-linux-androideabi-

@@ -55,8 +55,12 @@ PRODUCT_PACKAGES += \
 # I want busybox :)
 PRODUCT_PACKAGES += busybox
 
-ifneq ($(TARGET_BUILD_VARIANT),user) 
+ifneq ($(TARGET_BUILD_VARIANT),user)
 ADDITIONAL_DEFAULT_PROPERTIES += \
+    ro.secure=0 \
+    ro.adb.secure=0
+
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.secure=0 \
     ro.adb.secure=0
 endif

@@ -29,15 +29,44 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <string>
 
 #include <cutils/properties.h>
 
 #include "vendor_init.h"
-#include "property_service.h"
+
+#if __has_include(<android-base/logging.h>)
+#include <android-base/logging.h>
+#include <android-base/properties.h>
+#define LOG_INFO_INIT(msg) LOG(INFO) << "init: " << msg
+#else
 #include "log.h"
+#include "property_service.h"
 #include "util.h"
+#define LOG_INFO_INIT(msg) INFO("init: %s\n", msg.c_str())
+#endif
 
 #include "init_pxa1908.h"
+
+static std::string get_prop(const std::string& key)
+{
+#if __has_include(<android-base/properties.h>)
+    return android::base::GetProperty(key, "");
+#else
+    char prop_val[PROP_VALUE_MAX];
+    property_get(key.c_str(), prop_val);
+    return std::string(prop_val);
+#endif
+}
+
+static void set_prop(const char* key, const char* value)
+{
+#if __has_include(<android-base/properties.h>)
+    android::base::SetProperty(key, value);
+#else
+    property_set(key, value);
+#endif
+}
 
 void set_rild_libpath(char const *variant)
 {
@@ -55,40 +84,40 @@ void cdma_properties(char const *operator_alpha,
         char const *rild_lib_variant)
 {
     /* Dynamic CDMA Properties */
-    property_set("ro.cdma.home.operator.alpha", operator_alpha);
-    property_set("ro.cdma.home.operator.numeric", operator_numeric);
-    property_set("ro.telephony.default_network", default_network);
+    set_prop("ro.cdma.home.operator.alpha", operator_alpha);
+    set_prop("ro.cdma.home.operator.numeric", operator_numeric);
+    set_prop("ro.telephony.default_network", default_network);
     set_rild_libpath(rild_lib_variant);
 
     /* Static CDMA Properties */
-    property_set("ril.subscription.types", "NV,RUIM");
-    property_set("ro.telephony.default_cdma_sub", "0");
-    property_set("telephony.lteOnCdmaDevice", "1");
+    set_prop("ril.subscription.types", "NV,RUIM");
+    set_prop("ro.telephony.default_cdma_sub", "0");
+    set_prop("telephony.lteOnCdmaDevice", "1");
 }
 
 void lte_properties(char const *rild_lib_variant)
 {
     set_rild_libpath(rild_lib_variant);
 
-    property_set("ro.telephony.default_network", "9");
-    property_set("telephony.lteOnGsmDevice", "1");
+    set_prop("ro.telephony.default_network", "9");
+    set_prop("telephony.lteOnGsmDevice", "1");
 }
 
 void gsm_properties(char const *rild_lib_variant)
 {
     set_rild_libpath(rild_lib_variant);
 
-    property_set("ro.telephony.default_network", "3");
-    property_set("telephony.lteOnCdmaDevice", "0");
+    set_prop("ro.telephony.default_network", "3");
+    set_prop("telephony.lteOnCdmaDevice", "0");
 }
 
 void init_target_properties()
 {
-    std::string platform = property_get("ro.board.platform");
+    std::string platform = get_prop("ro.board.platform");
     if (platform != ANDROID_TARGET)
         return;
 
-    std::string bootloader = property_get("ro.bootloader");
+    std::string bootloader = get_prop("ro.bootloader");
 
     if( bootloader.find("G361F") == 0 )
     {
@@ -100,6 +129,7 @@ void init_target_properties()
         lte_properties("");
     }
 
-    std::string device = property_get("ro.product.device");
-    INFO("Found bootloader id %s setting build properties for %s device\n", bootloader.c_str(), device.c_str());
+    std::string device = get_prop("ro.product.device");
+    std::string log_msg = "Found bootloader id " + bootloader + " setting build properties for " + device + " device";
+    LOG_INFO_INIT(log_msg);
 }
