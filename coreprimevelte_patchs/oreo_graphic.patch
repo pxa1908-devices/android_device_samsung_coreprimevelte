@@ -1,0 +1,40 @@
+--- a/frameworks/native/libs/ui/GraphicBuffer.cpp
++++ b/frameworks/native/libs/ui/GraphicBuffer.cpp
+@@ -53,6 +53,21 @@ GraphicBuffer::GraphicBuffer()
+     handle = NULL;
+ }
+ 
++GraphicBuffer::GraphicBuffer(uint32_t inWidth, uint32_t inHeight, PixelFormat inFormat, uint32_t inUsage)
++    : BASE(), mOwner(ownData), mBufferMapper(GraphicBufferMapper::get()),
++      mInitCheck(NO_ERROR), mId(getUniqueId()), mGenerationNumber(0)
++{
++    width  =
++    height =
++    stride =
++    format =
++    usage  = 0;
++    handle = NULL;
++    std::string requestorName = "<Unknown>";
++    mInitCheck = initWithSize(inWidth, inHeight, inFormat, 1, inUsage,
++            std::move(requestorName));
++}
++
+ GraphicBuffer::GraphicBuffer(uint32_t inWidth, uint32_t inHeight,
+         PixelFormat inFormat, uint32_t inUsage, std::string requestorName)
+     : BASE(), mOwner(ownData), mBufferMapper(GraphicBufferMapper::get()),
+
+--- a/frameworks/native/include/ui/GraphicBuffer.h
++++ b/frameworks/native/include/ui/GraphicBuffer.h
+@@ -72,9 +72,11 @@ public:
+
+     GraphicBuffer();
+
++    GraphicBuffer(uint32_t inWidth, uint32_t inHeight, PixelFormat inFormat,
++            uint32_t inUsage);
+     // creates w * h buffer
+     GraphicBuffer(uint32_t inWidth, uint32_t inHeight, PixelFormat inFormat,
+-            uint32_t inUsage, std::string requestorName = "<Unknown>");
++            uint32_t inUsage, std::string requestorName);
+
+     // create a buffer from an existing handle
+     GraphicBuffer(uint32_t inWidth, uint32_t inHeight, PixelFormat inFormat,
