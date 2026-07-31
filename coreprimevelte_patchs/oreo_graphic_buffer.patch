@@ -3,14 +3,16 @@ diff --git a/chromium/plat_support/graphic_buffer_impl.cpp b/chromium/plat_suppo
 index xxxxxxx..xxxxxxx 100644
 --- a/chromium/plat_support/graphic_buffer_impl.cpp
 +++ b/chromium/plat_support/graphic_buffer_impl.cpp
-@@ -23,7 +23,7 @@
+@@ -22,8 +22,8 @@
+ 
  namespace android {
  GraphicBufferImpl::GraphicBufferImpl(uint32_t w, uint32_t h)
-   : mBuffer(new android::GraphicBuffer(w, h, PIXEL_FORMAT_RGBA_8888,
+-  : mBuffer(new android::GraphicBuffer(w, h, PIXEL_FORMAT_RGBA_8888,
 -       android::GraphicBuffer::USAGE_HW_TEXTURE |
 -       android::GraphicBuffer::USAGE_SW_READ_OFTEN |
 -       android::GraphicBuffer::USAGE_SW_WRITE_OFTEN)) {
-+       (uint32_t)(android::GraphicBuffer::USAGE_HW_TEXTURE |
++  : mBuffer(new android::GraphicBuffer(w, h, PIXEL_FORMAT_RGBA_8888, 1,
++       (uint64_t)(android::GraphicBuffer::USAGE_HW_TEXTURE |
 +       android::GraphicBuffer::USAGE_SW_READ_OFTEN |
 +       android::GraphicBuffer::USAGE_SW_WRITE_OFTEN))) {
  }
