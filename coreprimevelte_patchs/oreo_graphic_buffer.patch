@@ -1,0 +1,16 @@
+project frameworks/webview/
+diff --git a/chromium/plat_support/graphic_buffer_impl.cpp b/chromium/plat_support/graphic_buffer_impl.cpp
+index xxxxxxx..xxxxxxx 100644
+--- a/chromium/plat_support/graphic_buffer_impl.cpp
++++ b/chromium/plat_support/graphic_buffer_impl.cpp
+@@ -23,7 +23,7 @@
+ namespace android {
+ GraphicBufferImpl::GraphicBufferImpl(uint32_t w, uint32_t h)
+   : mBuffer(new android::GraphicBuffer(w, h, PIXEL_FORMAT_RGBA_8888,
+-       android::GraphicBuffer::USAGE_HW_TEXTURE |
+-       android::GraphicBuffer::USAGE_SW_READ_OFTEN |
+-       android::GraphicBuffer::USAGE_SW_WRITE_OFTEN)) {
++       (uint32_t)(android::GraphicBuffer::USAGE_HW_TEXTURE |
++       android::GraphicBuffer::USAGE_SW_READ_OFTEN |
++       android::GraphicBuffer::USAGE_SW_WRITE_OFTEN))) {
+ }
