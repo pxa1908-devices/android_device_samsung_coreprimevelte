@@ -1,0 +1,13 @@
+project hardware/ril/
+diff --git a/rild/rild.c b/rild/rild.c
+index xxxxxxx..xxxxxxx 100644
+--- a/rild/rild.c
++++ b/rild/rild.c
+@@ -40,3 +40,7 @@
+ #define LIB_PATH_PROPERTY   "rild.libpath"
+ #define LIB_ARGS_PROPERTY   "rild.libargs"
+ #define MAX_LIB_ARGS        16
++
++#ifndef MAX_SERVICE_NAME_LENGTH
++#define MAX_SERVICE_NAME_LENGTH 128
++#endif
