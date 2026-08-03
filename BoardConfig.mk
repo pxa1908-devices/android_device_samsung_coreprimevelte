@@ -17,6 +17,8 @@
 
 DEVICE_PATH := device/samsung/coreprimevelte
 
+BLOCK_BASED_OTA := false
+
 # Oreo legacy non-Treble settings
 PRODUCT_FULL_TREBLE_OVERRIDE := false
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := false
